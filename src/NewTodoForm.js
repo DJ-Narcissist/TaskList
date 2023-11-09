@@ -1,4 +1,4 @@
-// NewTodoForm.js
+
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
@@ -29,7 +29,7 @@ const NewTodoForm = ({ addItem }) => {
                 onChange={handleChange}
                 />
             </label>
-            <button type="submit">Add Todo</button>
+            <button type="submit">Add Task</button>
         </form>
     );
 };

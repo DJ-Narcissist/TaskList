@@ -24,7 +24,7 @@ const TodoList = () => {
 
     const itemComponents = items.map(item => (
         <Todo 
-        key={items.id}
+        key={item.id}
         id ={item.id}
         task={item.task}
         item={item}
