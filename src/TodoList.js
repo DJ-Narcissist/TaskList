@@ -4,26 +4,32 @@ import NewTodoForm from "./NewTodoForm";
 
 const TodoList = () => {
     const [items, setItems] = useState([]);
-    const [inputvalue, setInputValue] = useState('');
+    
 
     const addItem = (newItem) => {
-        if (inputvalue){
-            setItems([...items, setInputValue]);
-            setInputValue('');
-
-        }
+            setItems([...items, newItem]);
     };
 
+    const update = (id, updatedTask) => {
+        setItems(items.map((item) => item.id === id ? {...item, task: updatedTask} : item));
+    };
+    
+
+
+
     const handleDelete = (id) => {
-        const updatedItems = items.filter((item, i) => i !== id);
+        const updatedItems = items.filter((item) => item.id !== id);
         setItems(updatedItems);
     };
 
     const itemComponents = items.map(item => (
         <Todo 
         key={items.id}
-
-        
+        id ={item.id}
+        task={item.task}
+        item={item}
+        update={update}
+        remove={handleDelete}
         />
     ))
     
@@ -31,9 +37,7 @@ const TodoList = () => {
     return (
         <div>
             <NewTodoForm addItem={addItem} />
-            {items.map((item) => (
-                
-            ))}
+            {itemComponents}
         </div>    
     );
 };
